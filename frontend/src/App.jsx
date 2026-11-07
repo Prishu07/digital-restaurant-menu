@@ -8,6 +8,7 @@ import PromoVideoSection from './sections/PromoVideoSection';
 import OpeningHoursSection from './sections/OpeningHoursSection';
 import ContactSection from './sections/ContactSection';
 import Footer from './sections/Footer';
+import AdminModal from './components/AdminModal';
 import { AlertTriangle, RefreshCw } from 'lucide-react';
 
 export default function App() {
@@ -19,12 +20,12 @@ export default function App() {
   const [mediaData, setMediaData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isAdminOpen, setIsAdminOpen] = useState(false);
 
   const fetchWebsiteData = async () => {
     setIsLoading(true);
     setError(null);
     try {
-      // Relative endpoints - works identically in dev (via Vite proxy) and production (via Express/Nginx)
       const [menuRes, mediaRes] = await Promise.all([
         fetch('/api/menu'),
         fetch('/api/media')
@@ -64,7 +65,10 @@ export default function App() {
   return (
     <div className="min-h-screen bg-dark-950 text-slate-100 flex flex-col font-sans selection:bg-amber-500 selection:text-dark-950">
       {/* 1. Navbar */}
-      <Navbar restaurant={menuData.restaurant} />
+      <Navbar
+        restaurant={menuData.restaurant}
+        onOpenAdmin={() => setIsAdminOpen(true)}
+      />
 
       {/* Global Connection Error Banner if Backend is Unreachable */}
       {error && (
@@ -125,8 +129,16 @@ export default function App() {
       {/* 16. Footer */}
       <Footer
         restaurant={menuData.restaurant}
+        onOpenAdmin={() => setIsAdminOpen(true)}
+      />
+
+      {/* Admin S3 & Menu Management Portal (Protected by PIN) */}
+      <AdminModal
+        isOpen={isAdminOpen}
+        onClose={() => setIsAdminOpen(false)}
+        onMenuUpdated={fetchWebsiteData}
+        categories={menuData.categories}
       />
     </div>
   );
 }
-

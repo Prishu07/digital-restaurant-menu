@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Utensils, Phone, Clock, Menu, X, Award } from 'lucide-react';
+import { Utensils, Phone, Menu, X, ShieldCheck } from 'lucide-react';
 
-export default function Navbar({ restaurant }) {
+export default function Navbar({ restaurant, onOpenAdmin }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -61,15 +61,24 @@ export default function Navbar({ restaurant }) {
             ))}
           </nav>
 
-          {/* Quick Contact CTA */}
-          <div className="hidden lg:flex items-center space-x-4">
+          {/* Quick Contact & Admin CTA */}
+          <div className="hidden lg:flex items-center space-x-3">
             <a
               href={`tel:${restaurant?.phone || '+15558392041'}`}
-              className="inline-flex items-center space-x-2 px-4 py-2 rounded-full border border-amber-500/40 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 text-sm font-semibold transition-all hover:scale-105"
+              className="inline-flex items-center space-x-2 px-3.5 py-2 rounded-full border border-amber-500/40 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 text-sm font-semibold transition-all hover:scale-105"
             >
               <Phone className="w-4 h-4 text-amber-400" />
               <span>{restaurant?.phone || '+1 (555) 839-2041'}</span>
             </a>
+
+            <button
+              onClick={onOpenAdmin}
+              className="p-2 rounded-full border border-slate-700 bg-dark-900 hover:border-amber-500 text-slate-300 hover:text-amber-400 transition-all"
+              title="Admin S3 & Menu Portal"
+            >
+              <ShieldCheck className="w-4 h-4" />
+            </button>
+
             <a
               href="#menu"
               className="px-5 py-2 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-dark-950 text-sm font-bold shadow-md hover:shadow-amber-500/20 transition-all hover:scale-105"
@@ -79,7 +88,15 @@ export default function Navbar({ restaurant }) {
           </div>
 
           {/* Mobile Menu Toggle Button */}
-          <div className="flex items-center md:hidden">
+          <div className="flex items-center space-x-2 md:hidden">
+            <button
+              onClick={onOpenAdmin}
+              className="p-2 rounded-lg bg-dark-850 text-slate-300 hover:text-amber-400"
+              title="Admin S3 & Menu Portal"
+            >
+              <ShieldCheck className="w-5 h-5" />
+            </button>
+
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 rounded-lg bg-dark-850 text-slate-200 hover:text-amber-400 focus:outline-none"
@@ -106,13 +123,13 @@ export default function Navbar({ restaurant }) {
               </a>
             ))}
             <div className="pt-4 border-t border-slate-800 flex flex-col space-y-3">
-              <a
-                href={`tel:${restaurant?.phone || '+15558392041'}`}
-                className="flex items-center justify-center space-x-2 py-2.5 rounded-lg border border-amber-500/30 bg-amber-500/10 text-amber-300 text-sm font-semibold"
+              <button
+                onClick={() => { setMobileMenuOpen(false); onOpenAdmin(); }}
+                className="flex items-center justify-center space-x-2 py-2.5 rounded-lg border border-slate-700 bg-dark-850 text-slate-300 text-sm font-medium"
               >
-                <Phone className="w-4 h-4" />
-                <span>Call {restaurant?.phone || '+1 (555) 839-2041'}</span>
-              </a>
+                <ShieldCheck className="w-4 h-4 text-amber-400" />
+                <span>Admin S3 & Menu Portal</span>
+              </button>
               <a
                 href="#menu"
                 onClick={() => setMobileMenuOpen(false)}
@@ -127,4 +144,3 @@ export default function Navbar({ restaurant }) {
     </header>
   );
 }
-

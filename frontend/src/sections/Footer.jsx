@@ -1,7 +1,7 @@
 import React from 'react';
-import { Utensils, ArrowUp, Cloud, ShieldCheck, Heart } from 'lucide-react';
+import { Utensils, ArrowUp, Cloud, ShieldCheck } from 'lucide-react';
 
-export default function Footer({ restaurant }) {
+export default function Footer({ restaurant, onOpenAdmin }) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -11,7 +11,6 @@ export default function Footer({ restaurant }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           
-          {/* Col 1: Brand Info */}
           <div className="md:col-span-1 space-y-4">
             <div className="flex items-center space-x-3">
               <div className="w-9 h-9 rounded-full bg-amber-500 text-dark-950 flex items-center justify-center font-bold">
@@ -24,12 +23,8 @@ export default function Footer({ restaurant }) {
             <p className="text-xs text-slate-400 leading-relaxed">
               {restaurant?.tagline || "Modern Culinary Craftsmanship & Fine Dining"}
             </p>
-            <div className="pt-2 text-xs text-slate-500 flex items-center space-x-1.5">
-              <span>Made with care for fine food lovers</span>
-            </div>
           </div>
 
-          {/* Col 2: Navigation Links */}
           <div>
             <h4 className="text-white font-semibold text-xs tracking-wider uppercase mb-4">Quick Links</h4>
             <ul className="space-y-2.5 text-xs">
@@ -39,10 +34,18 @@ export default function Footer({ restaurant }) {
               <li><a href="#menu" className="hover:text-amber-400 transition-colors">Interactive Menu</a></li>
               <li><a href="#video" className="hover:text-amber-400 transition-colors">Promotional Video</a></li>
               <li><a href="#hours" className="hover:text-amber-400 transition-colors">Opening Hours</a></li>
+              <li>
+                <button
+                  onClick={onOpenAdmin}
+                  className="text-amber-400 hover:text-amber-300 font-medium flex items-center space-x-1.5 transition-colors pt-1"
+                >
+                  <ShieldCheck className="w-3.5 h-3.5" />
+                  <span>Admin & S3 Portal (PIN Protected)</span>
+                </button>
+              </li>
             </ul>
           </div>
 
-          {/* Col 3: Hours Summary */}
           <div>
             <h4 className="text-white font-semibold text-xs tracking-wider uppercase mb-4">Service Hours</h4>
             <div className="space-y-2 text-xs">
@@ -53,7 +56,6 @@ export default function Footer({ restaurant }) {
             </div>
           </div>
 
-          {/* Col 4: AWS Infrastructure Badge */}
           <div className="space-y-3">
             <h4 className="text-white font-semibold text-xs tracking-wider uppercase mb-4">Cloud Architecture</h4>
             <div className="p-3.5 rounded-xl bg-dark-900 border border-slate-800 text-xs space-y-2">
@@ -75,7 +77,6 @@ export default function Footer({ restaurant }) {
 
         </div>
 
-        {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
           <p className="text-slate-500">
             &copy; {new Date().getFullYear()} {restaurant?.name || "L'Aura Bistro"}. All rights reserved.
@@ -89,9 +90,7 @@ export default function Footer({ restaurant }) {
             <ArrowUp className="w-3.5 h-3.5" />
           </button>
         </div>
-
       </div>
     </footer>
   );
 }
-
