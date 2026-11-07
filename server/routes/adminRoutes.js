@@ -19,3 +19,4 @@ router.post('/add-dish', adminController.requireAdminPin, upload.single('image')
 router.delete('/dish/:id', adminController.requireAdminPin, adminController.deleteDish);
 
 module.exports = router;
+

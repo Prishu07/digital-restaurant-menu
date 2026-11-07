@@ -12,8 +12,8 @@ const PORT = process.env.PORT || 3000;
 
 // Security and middleware
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
 // Request logger for monitoring
 app.use((req, res, next) => {
@@ -66,6 +66,15 @@ app.get('*', (req, res) => {
         </html>
       `);
     }
+  });
+});
+
+// Global JSON Error Handler (Catches Multer 10MB limits or runtime errors)
+app.use((err, req, res, next) => {
+  console.error('[Server Error Handler]:', err);
+  res.status(err.status || 500).json({
+    success: false,
+    message: err.message || 'An unexpected error occurred on the server'
   });
 });
 

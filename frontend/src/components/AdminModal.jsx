@@ -32,6 +32,26 @@ export default function AdminModal({ isOpen, onClose, onMenuUpdated, categories 
     }
   }, [isOpen, isAuthenticated]);
 
+  /**
+   * Helper to safely parse API responses even if Nginx or Express returns HTML errors
+   */
+  const safeParseResponse = async (res) => {
+    const rawText = await res.text();
+    let data = null;
+    try {
+      data = JSON.parse(rawText);
+    } catch (e) {
+      if (res.status === 413 || rawText.includes('413 Request Entity Too Large')) {
+        throw new Error('Photo is too large for server upload (Nginx 413). Please select a file under 10MB or update nginx.conf.');
+      }
+      if (res.status === 502) {
+        throw new Error('Node.js backend is restarting (502 Bad Gateway). Please wait 5 seconds and retry.');
+      }
+      throw new Error(`Server returned HTTP ${res.status}: ${rawText.replace(/<[^>]*>?/gm, '').slice(0, 120)}`);
+    }
+    return data;
+  };
+
   const handleVerifyPin = async (e) => {
     e?.preventDefault();
     setIsLoading(true);
@@ -42,7 +62,7 @@ export default function AdminModal({ isOpen, onClose, onMenuUpdated, categories 
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ pin })
       });
-      const data = await res.json();
+      const data = await safeParseResponse(res);
       if (data.success) {
         setIsAuthenticated(true);
         sessionStorage.setItem('admin_pin', pin);
@@ -52,7 +72,7 @@ export default function AdminModal({ isOpen, onClose, onMenuUpdated, categories 
         setError(data.message || 'Incorrect PIN');
       }
     } catch (err) {
-      setError('Connection error: ' + err.message);
+      setError(err.message || 'Connection error');
     } finally {
       setIsLoading(false);
     }
@@ -66,8 +86,8 @@ export default function AdminModal({ isOpen, onClose, onMenuUpdated, categories 
       const res = await fetch('/api/admin/status', {
         headers: { 'x-admin-pin': p }
       });
-      const data = await res.json();
-      if (data.success) {
+      const data = await safeParseResponse(res);
+      if (data && data.success) {
         setStatus(data);
       }
     } catch (err) {
@@ -78,8 +98,8 @@ export default function AdminModal({ isOpen, onClose, onMenuUpdated, categories 
   const fetchDishes = async () => {
     try {
       const res = await fetch('/api/menu');
-      const data = await res.json();
-      if (data.success) {
+      const data = await safeParseResponse(res);
+      if (data && data.success) {
         setAllDishes(data.items || []);
       }
     } catch (err) {
@@ -96,7 +116,7 @@ export default function AdminModal({ isOpen, onClose, onMenuUpdated, categories 
         method: 'POST',
         headers: { 'x-admin-pin': getSavedPin() }
       });
-      const data = await res.json();
+      const data = await safeParseResponse(res);
       if (data.success) {
         setMessage(data.message);
         onMenuUpdated?.();
@@ -139,7 +159,7 @@ export default function AdminModal({ isOpen, onClose, onMenuUpdated, categories 
         body: formData
       });
 
-      const data = await res.json();
+      const data = await safeParseResponse(res);
       if (data.success) {
         setMessage(`✔ Dish "${dishName}" added successfully and uploaded to S3!`);
         // Reset form
@@ -167,7 +187,7 @@ export default function AdminModal({ isOpen, onClose, onMenuUpdated, categories 
         method: 'DELETE',
         headers: { 'x-admin-pin': getSavedPin() }
       });
-      const data = await res.json();
+      const data = await safeParseResponse(res);
       if (data.success) {
         setMessage(`✔ Removed "${dishTitle}" from menu.`);
         fetchDishes();
@@ -325,7 +345,7 @@ export default function AdminModal({ isOpen, onClose, onMenuUpdated, categories 
                       One-Click S3 Media Import
                     </h4>
                     <p className="text-xs text-slate-400 leading-relaxed mb-4">
-                      Automatically downloads all 14 starter menu food images, restaurant hero banners, and videos, and uploads them directly into your private Amazon S3 bucket using your EC2 IAM role.
+                      Automatically downloads all starter menu food images, restaurant hero banners, and videos, and uploads them directly into your private Amazon S3 bucket using your EC2 IAM role.
                     </p>
 
                     <button
