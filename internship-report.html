@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Internship Training Report - Priyanshu Durlav</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #f1f5f9;
+      font-family: 'Times New Roman', Times, serif, 'Segoe UI', sans-serif;
+      color: #0f172a;
+      line-height: 1.5;
+    }
+    .page-container {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 20px auto;
+      background: #ffffff;
+      padding: 20mm 18mm 18mm 18mm;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1.5px solid #1e293b;
+    }
+    @media print {
+      body {
+        background: transparent;
+      }
+      .page-container {
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+        border: 1.5px solid #1e293b !important;
+        height: 297mm;
+        max-height: 297mm;
+      }
+    }
+    .header-tag {
+      text-align: center;
+      font-size: 8.5pt;
+      font-weight: 600;
+      color: #64748b;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border-bottom: 0.5px solid #cbd5e1;
+      padding-bottom: 4px;
+      margin-bottom: 22px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .footer-tag {
+      text-align: center;
+      font-size: 8pt;
+      font-weight: 500;
+      color: #64748b;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-top: 0.5px solid #cbd5e1;
+      padding-top: 6px;
+      margin-top: auto;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    h1.main-title {
+      font-size: 20pt;
+      font-weight: bold;
+      text-align: center;
+      line-height: 1.3;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+    h2.section-heading {
+      font-size: 13pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #0f172a;
+      padding-bottom: 3px;
+      color: #0f172a;
+    }
+    h3.sub-heading {
+      font-size: 10.5pt;
+      font-weight: bold;
+      margin-top: 12px;
+      margin-bottom: 5px;
+      color: #1e293b;
+    }
+    p {
+      font-size: 9.5pt;
+      text-align: justify;
+      margin-bottom: 8px;
+      line-height: 1.45;
+    }
+    ul, ol {
+      margin-left: 20px;
+      margin-bottom: 8px;
+      font-size: 9pt;
+    }
+    li {
+      margin-bottom: 3px;
+    }
+    .table-custom {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0;
+      font-size: 8.5pt;
+    }
+    .table-custom th, .table-custom td {
+      border: 1px solid #475569;
+      padding: 5px 8px;
+      text-align: left;
+    }
+    .table-custom th {
+      background-color: #f1f5f9;
+      font-weight: bold;
+    }
+    .flow-box {
+      border: 1.5px solid #881337;
+      border-radius: 12px;
+      padding: 3px 10px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 8pt;
+      letter-spacing: 0.5px;
+      background: #fff;
+      color: #0f172a;
+      width: 84%;
+      margin: 1.5px auto;
+      text-transform: uppercase;
+    }
+    .flow-arrow {
+      text-align: center;
+      color: #881337;
+      font-size: 9pt;
+      font-weight: bold;
+      line-height: 1;
+      margin: 1px 0;
+    }
+    .fig-img {
+      width: 100%;
+      max-height: 205px;
+      object-fit: contain;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      margin: 6px 0 3px 0;
+      background: #000;
+    }
+    .fig-caption {
+      font-size: 8pt;
+      font-style: italic;
+      color: #475569;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .code-box {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      padding: 6px 10px;
+      font-family: Consolas, monospace;
+      font-size: 8pt;
+      border-radius: 4px;
+      margin: 6px 0;
+      white-space: pre-wrap;
+    }
+    .arch-box {
+      border: 1px solid #0284c7;
+      border-radius: 8px;
+      padding: 5px;
+      text-align: center;
+      background: #f0f9ff;
+      font-size: 8pt;
+      margin: 3px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== PAGE 1: COVER PAGE ==================== -->
+  <div class="page-container">
+    <div>
+      <div class="header-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+      
+      <div style="text-align: center; margin-top: 40px; margin-bottom: 40px;">
+        <h1 class="main-title">INTERNSHIP TRAINING REPORT<br/><span style="font-size: 14pt; font-weight: normal;">ON</span><br/>INTERNSHIP ON CLOUD COMPUTING<br/>USING AWS</h1>
+        
+        <!-- Dreamz Vision Emblem -->
+        <div style="margin: 35px auto; width: 110px; height: 110px; border-radius: 50%; border: 4px solid #881337; display: flex; align-items: center; justify-content: center; background: radial-gradient(#ffffff, #fef2f2); box-shadow: 0 0 10px rgba(136,19,55,0.2);">
+          <div style="font-size: 32pt; font-family: serif; font-weight: bold; color: #881337; letter-spacing: -2px;">DV</div>
+        </div>
+
+        <div style="font-size: 10pt; font-weight: 600; color: #475569; letter-spacing: 1px; margin-bottom: 4px;">ORGANISED BY</div>
+        <div style="font-size: 13pt; font-weight: bold; color: #0f172a; letter-spacing: 0.5px;">DREAMZ VISION FINISHING</div>
+      </div>
+    </div>
+
+    <!-- Student Details (Right Aligned as requested) -->
+    <div style="margin-bottom: 25px;">
+      <table style="width: 100%; border: none;">
+        <tr>
+          <td style="width: 45%; border: none; vertical-align: top; padding-top: 10px;">
+            <div style="font-weight: bold; font-size: 9.5pt; margin-bottom: 50px;">TRAINER’S SIGNATURE</div>
+            <div style="width: 170px; border-bottom: 1px solid #0f172a;"></div>
+          </td>
+          <td style="width: 55%; border: none; text-align: right; vertical-align: top;">
+            <div style="font-weight: bold; font-size: 9.5pt; margin-bottom: 50px; text-align: right;">SUBMITTED BY</div>
+            <div style="width: 170px; border-bottom: 1px solid #0f172a; margin-left: auto; margin-bottom: 18px;"></div>
+            
+            <div style="text-align: right; font-size: 9.5pt; line-height: 1.7; font-family: 'Segoe UI', Tahoma, sans-serif;">
+              <div><strong>NAME :</strong> Priyanshu Durlav</div>
+              <div><strong>REG. NO. :</strong> D242535934</div>
+              <div><strong>ROLL NUMBER :</strong> DKALCSTS5</div>
+              <div><strong>SEM :</strong> Sem-5</div>
+              <div><strong>SESSION :</strong> 2024-27</div>
+              <div><strong>INSTITUTE NAME :</strong> KALNA POLYTECHNIC</div>
+              <div><strong>FIELD OF TRAINING :</strong> INTERNSHIP ON CLOUD COMPUTING USING AWS</div>
+              <div><strong>PERIOD :</strong> FROM 28/10/26 to 06/11/26</div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="footer-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+  </div>
+
+
+  <!-- ==================== PAGE 2: INTRODUCTION ==================== -->
+  <div class="page-container">
+    <div>
+      <div class="header-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+      
+      <h2 class="section-heading">INTRODUCTION</h2>
+      <p>Cloud computing is a model for delivering computing resources such as virtual servers, object storage, networking, security controls, and application services over the Internet on an on-demand, pay-as-you-go basis. Amazon Web Services (AWS) provides a comprehensive, highly secure, and globally distributed suite of cloud services that can be combined to architect, deploy, and maintain modern web applications with enterprise durability and zero on-premise hardware overhead.</p>
+
+      <p>This internship training project applies practical AWS cloud concepts to a full-stack, production-ready web application named <strong>L'Aura Bistro — Digital Restaurant Menu Website</strong>. The application functions as an interactive, luxury digital dining catalog allowing patrons to browse categorized gourmet food selections, conduct live dish searches, review dietary certifications (Vegetarian, Vegan, Gluten-Free), and stream high-definition culinary media clips.</p>
+
+      <p>The application architecture eliminates traditional database overhead by utilizing a structured, lightweight JSON data repository. The server logic is hosted on an <strong>Amazon Elastic Compute Cloud (EC2)</strong> virtual instance running Ubuntu Linux, managed continuously through <strong>PM2</strong> and reverse-proxied via <strong>Nginx</strong> on public HTTP Port 80.</p>
+
+      <p>All high-resolution culinary photography and promotional kitchen video assets are stored securely in a private <strong>Amazon Simple Storage Service (S3)</strong> bucket with Block Public Access fully enabled. Media files are dynamically streamed to visitors using temporary cryptographic <strong>Presigned URLs</strong> generated by the backend Express server.</p>
+
+      <p>The project demonstrates an end-to-end cloud workflow involving single-page React architecture, REST API communication, automated Linux process daemonization, <strong>AWS IAM Instance Role</strong> authorization (completely eliminating hardcoded credentials), and continuous GitHub-based cloud deployment.</p>
+    </div>
+
+    <div class="footer-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+  </div>
+
+
+  <!-- ==================== PAGE 3: AIM & FAMILIARIZATION ==================== -->
+  <div class="page-container">
+    <div>
+      <div class="header-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+      
+      <h2 class="section-heading">AIM</h2>
+      <p>To become familiar with core cloud computing concepts, AWS services, EC2 Linux virtual server hosting, Amazon S3 private object storage, IAM role-based permissions, REST API communication, automated media presigning, Nginx reverse proxy configuration, and the fundamental operations required to deploy and manage a secure, cloud-based web application.</p>
+
+      <img src="report-images/live-website-ui.jpg" class="fig-img" alt="Live Application UI">
+      <div class="fig-caption">Figure 1: Live L'Aura Bistro Digital Restaurant Menu application hosted on the AWS EC2 public endpoint (http://3.26.210.235/).</div>
+
+      <h2 class="section-heading" style="margin-top: 14px;">FAMILIARIZATION WITH CLOUD COMPUTING AND AWS</h2>
+      <p>The training begins with the fundamental cloud concepts required to understand the project architecture:</p>
+      
+      <ol style="font-size: 8.5pt; line-height: 1.5;">
+        <li><strong>Cloud Computing:</strong> On-demand access to virtualized computing resources, storage, and networking over the Internet.</li>
+        <li><strong>Amazon EC2:</strong> Resizable virtual compute capacity used in this project to host the Node.js Express server and compiled React application.</li>
+        <li><strong>Amazon S3:</strong> Secure, high-durability object storage used to store private culinary photos and promotional restaurant videos.</li>
+        <li><strong>AWS IAM:</strong> Identity and Access Management used to securely govern permissions between the EC2 compute instance and the S3 bucket.</li>
+        <li><strong>IAM Role / Instance Profile:</strong> Allows the EC2 application to obtain temporary, automatically rotated AWS credentials without storing permanent access keys on the server.</li>
+        <li><strong>Security Group:</strong> Acts as a virtual firewall controlling inbound network traffic to the EC2 instance (allowing Port 80 HTTP and restricting Port 22 SSH).</li>
+        <li><strong>PM2 & Nginx:</strong> PM2 maintains continuous backend uptime with auto-restart upon server reboot, while Nginx handles public Port 80 reverse-proxy routing.</li>
+      </ol>
+
+      <p style="font-size: 8pt; color: #475569; margin-top: 4px;">The documented production deployment uses Ubuntu Server 24.04 LTS on EC2, Amazon S3 in the Sydney region (ap-southeast-2), Node.js 20, Express.js, React.js, Tailwind CSS, AWS SDK for JavaScript v3, PM2, and Nginx.</p>
+    </div>
+
+    <div class="footer-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+  </div>
+
+
+  <!-- ==================== PAGE 4: PROJECT OVERVIEW ==================== -->
+  <div class="page-container">
+    <div>
+      <div class="header-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+      
+      <h2 class="section-heading">PROJECT OVERVIEW AND OBJECTIVES</h2>
+      <p><strong>Project Name: L'Aura Bistro — Digital Restaurant Menu Website</strong></p>
+      
+      <p>L'Aura Bistro is a modern, high-performance, single-page restaurant catalog application. It addresses the operational and financial challenges of traditional printed dining menus by providing an interactive digital showcase with live dish filtering, full-text ingredient searching, dietary classifications, kitchen promotional video streaming, and an administrative S3 cloud manager.</p>
+
+      <h3 class="sub-heading">Primary Objectives</h3>
+      <ul style="line-height: 1.55;">
+        <li>Develop a responsive, mobile-first single-page web application using React.js, Vite, and Tailwind CSS.</li>
+        <li>Eliminate database management complexities (MongoDB/MySQL) by utilizing a structured, reliable JSON data source (<code>data/menu.json</code>).</li>
+        <li>Store high-resolution dish photography and promotional video clips in private Amazon S3 object storage with Block Public Access enabled.</li>
+        <li>Implement secure, zero-credential authentication using an AWS EC2 IAM Instance Role, strictly avoiding hardcoded AWS Access Key IDs or Secret Access Keys.</li>
+        <li>Generate temporary S3 Presigned GET URLs on the Express backend with a 1-hour expiration time to securely stream private media to authenticated clients.</li>
+        <li>Provide a secure, PIN-protected Admin Manager allowing authorized staff to import starter menu media and upload new dish photos directly into Amazon S3.</li>
+        <li>Host the full-stack system on an AWS EC2 Ubuntu instance using PM2 for process uptime and Nginx as a reverse proxy on Port 80.</li>
+        <li>Establish an automated, repeatable GitHub-based continuous deployment workflow (<code>git push</code> locally → <code>git pull</code> & <code>pm2 restart</code> on EC2).</li>
+      </ul>
+    </div>
+
+    <div class="footer-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+  </div>
+
+
+  <!-- ==================== PAGE 5: PROBLEM STATEMENT & TECH STACK ==================== -->
+  <div class="page-container">
+    <div>
+      <div class="header-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+      
+      <h2 class="section-heading">PROBLEM STATEMENT AND TECHNOLOGY STACK</h2>
+      <p>Traditional restaurant operations rely heavily on physical paper menus that are prone to wear, expensive to reprint for seasonal dishes or price modifications, and incapable of showcasing multimedia. Conversely, complex digital menu systems frequently introduce database overhead (MongoDB/MySQL) and insecure credential handling.</p>
+      
+      <p>This project resolves these challenges by coupling a lightweight JSON data structure with native AWS cloud infrastructure:</p>
+
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th style="width: 32%;">Layer / Tool</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>HTML5 / React.js / Vite</strong></td>
+            <td>Single-page application structure, state reactivity, and fast client bundling.</td>
+          </tr>
+          <tr>
+            <td><strong>Tailwind CSS / Lucide</strong></td>
+            <td>Modern luxury culinary styling, mobile-first responsive layout, and UI icons.</td>
+          </tr>
+          <tr>
+            <td><strong>Node.js + Express.js</strong></td>
+            <td>Backend REST API endpoints, static React asset hosting, and S3 Presigned URL signing.</td>
+          </tr>
+          <tr>
+            <td><strong>Multer (Memory Storage)</strong></td>
+            <td>In-memory buffering of uploaded dish photos for direct cloud streaming to S3.</td>
+          </tr>
+          <tr>
+            <td><strong>AWS SDK v3 for JavaScript</strong></td>
+            <td>Direct programmatic interaction with Amazon S3 using IAM Instance Role authentication.</td>
+          </tr>
+          <tr>
+            <td><strong>Amazon EC2 (Ubuntu 24.04 LTS)</strong></td>
+            <td>Virtual cloud compute hosting the Express server and static assets.</td>
+          </tr>
+          <tr>
+            <td><strong>Amazon S3 (ap-southeast-2)</strong></td>
+            <td>Private, durable cloud object storage for dish photos and promotional video files.</td>
+          </tr>
+          <tr>
+            <td><strong>AWS IAM Instance Role</strong></td>
+            <td>Role-based least-privilege permission management without permanent access keys.</td>
+          </tr>
+          <tr>
+            <td><strong>Git / GitHub / npm / PM2 / Nginx</strong></td>
+            <td>Version control, automated build, background process management, and Port 80 proxy.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 class="section-heading" style="margin-top: 10px;">MAIN APPLICATION FEATURES</h2>
+      <ul style="font-size: 8pt; line-height: 1.45;">
+        <li><strong>Interactive Dish Filtering:</strong> Instant tabbed filtering across Starters, Chef's Specials, Main Course, Desserts, and Beverages.</li>
+        <li><strong>Real-time Food Search:</strong> Live filtering by dish title, ingredients (e.g., truffle, ribeye, sea bass), or description text.</li>
+        <li><strong>Dietary Badges:</strong> Visual tags for Vegetarian, Vegan, Non-Vegetarian, and Gluten-Free with spiciness flame ratings.</li>
+        <li><strong>Promotional Video Showcase:</strong> HTML5 video player streaming kitchen craft videos directly from private S3 storage.</li>
+        <li><strong>PIN-Protected Admin Manager:</strong> Secure modal protected by a 4-digit PIN (<code>1234</code>) to import starter media and add new dishes.</li>
+      </ul>
+    </div>
+
+    <div class="footer-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+  </div>
+
+
+  <!-- ==================== PAGE 6: S3 STORAGE & DIRECT UPLOAD ==================== -->
+  <div class="page-container">
+    <div>
+      <div class="header-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+      
+      <h2 class="section-heading">AMAZON S3 STORAGE & DIRECT UPLOAD PROCEDURE</h2>
+      <p>Amazon S3 serves as the primary object repository. The application maintains all image and video assets inside a private bucket (<code>expense-splitter-app-2026</code>) with Block Public Access fully enabled.</p>
+
+      <img src="report-images/admin-modal.jpg" class="fig-img" alt="Admin S3 Manager Modal">
+      <div class="fig-caption">Figure 2: Restaurant Admin & S3 Manager interface on live application allowing direct dish creation and secure cloud photo upload.</div>
+
+      <h3 class="sub-heading" style="text-align: center; margin-top: 8px;">DISH PHOTO UPLOAD & S3 INGESTION PROCEDURE</h3>
+      
+      <div style="margin: 8px 0;">
+        <div class="flow-box">ADMIN OPENS ADMIN PORTAL & ENTERS SECURITY PIN (1234)</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">INPUTS DISH DETAILS & SELECTS DISH PHOTO</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">FRONTEND SENDS MULTIPART FORMDATA REQUEST</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">NGINX REVERSE PROXY (client_max_body_size 50M)</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">EXPRESS RECEIVES FILE IN MEMORY BUFFER (MULTER)</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">AWS SDK v3 PutObjectCommand STREAMS TO S3</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">S3 STORES OBJECT (images/dishes/dish-name.jpg)</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">DISH RECORD APPENDED TO menu.json & UI REFRESHED</div>
+      </div>
+    </div>
+
+    <div class="footer-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+  </div>
+
+
+  <!-- ==================== PAGE 7: WORKFLOW & SYSTEM ARCHITECTURE ==================== -->
+  <div class="page-container">
+    <div>
+      <div class="header-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+      
+      <h2 class="section-heading">COMPLETE APPLICATION WORKFLOW</h2>
+      
+      <div style="margin: 6px 0;">
+        <div class="flow-box">DINER OPENS APPLICATION (http://3.26.210.235/)</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">NGINX RECEIVES HTTP REQUEST ON PORT 80</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">REVERSE PROXIED TO EXPRESS (PORT 3000)</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">EXPRESS SERVES COMPILED REACT SPA (public/)</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">REACT CLIENT CALLS GET /api/menu & /api/media</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">EXPRESS READS DISH DATA FROM data/menu.json</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">AWS SDK v3 QUERIES EC2 IAM INSTANCE PROFILE</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">GENERATES S3 PRESIGNED GET URLs (1-HR EXPIRY)</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">CLIENT RENDERS DISH CARDS WITH SECURE SIGNED URLs</div>
+      </div>
+
+      <h2 class="section-heading" style="margin-top: 10px;">SYSTEM ARCHITECTURE</h2>
+      <p>The application follows a resilient Three-Tier Cloud Architecture:</p>
+      
+      <p><strong>1. Client Tier:</strong> Runs in the diner's web browser. Built with React.js and styled with Tailwind CSS, it executes search filtering, category selection, and video streaming without full page reloads.</p>
+
+      <p><strong>2. Application Tier:</strong> Runs on an AWS EC2 Ubuntu instance. Express.js handles REST API endpoints, static React hosting, Multer file upload streaming, and S3 Presigned URL signing. Nginx manages Port 80 ingress and Gzip compression, while PM2 ensures process resilience.</p>
+
+      <p><strong>3. Storage Tier:</strong> Amazon S3 stores private food photographs and promotional video files. Content remains non-public and is delivered exclusively through time-limited cryptographic presigned URLs.</p>
+    </div>
+
+    <div class="footer-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+  </div>
+
+
+  <!-- ==================== PAGE 8: AWS CLOUD ARCHITECTURE ==================== -->
+  <div class="page-container">
+    <div>
+      <div class="header-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+      
+      <h2 class="section-heading">AWS CLOUD ARCHITECTURE</h2>
+
+      <div style="display: flex; justify-content: space-between; margin: 6px 0;">
+        <div class="arch-box" style="flex: 1;"><strong>USER BROWSER</strong><br/>React.js • Tailwind CSS<br/>Live Search & Filters</div>
+        <div class="arch-box" style="flex: 1;"><strong>AWS EC2</strong><br/>Ubuntu • Node.js<br/>Express • PM2 • Nginx</div>
+        <div class="arch-box" style="flex: 1;"><strong>AWS S3</strong><br/>Private Objects<br/>images/dishes/*.jpg</div>
+      </div>
+
+      <div style="display: flex; justify-content: center; margin: 3px 0;">
+        <div class="arch-box" style="width: 60%; border-color: #881337; background: #fff1f2;">
+          <strong>AWS IAM ROLE (Instance Profile)</strong><br/>
+          Zero Stored Access Keys • Dynamic Temporary Tokens
+        </div>
+      </div>
+
+      <img src="report-images/ec2-instance-running.jpg" class="fig-img" alt="Running EC2 Instance">
+      <div class="fig-caption">Figure 3: Amazon EC2 Console showing active Ubuntu instance Restaurant-Menu-Server (Instance ID: i-0c2ddc848efefceee, Public IP: 3.26.210.235, 3/3 checks passed).</div>
+
+      <h2 class="section-heading" style="margin-top: 8px;">PROJECT FOLDER STRUCTURE AND API</h2>
+      <div class="code-box">
+digital-restaurant-menu/
+├── frontend/src/components/ (Navbar, FoodCard, CategoryFilter, SearchBar, AdminModal)
+├── frontend/src/sections/ (HeroSection, IntroSection, MenuSection, PromoVideo, ...)
+├── public/                 # Compiled production React SPA (served by Express)
+├── server/config/s3.js     # AWS SDK v3 client authenticated via IAM Instance Role
+├── server/controllers/     # menuController.js, mediaController.js, adminController.js
+├── server/routes/          # menuRoutes.js, mediaRoutes.js, adminRoutes.js
+├── data/menu.json          # 14 gourmet dish records & category metadata
+├── server.js, ecosystem.config.js, nginx.conf, .env.example, README.md
+      </div>
+    </div>
+
+    <div class="footer-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+  </div>
+
+
+  <!-- ==================== PAGE 9: API DOCS & S3 DESIGN ==================== -->
+  <div class="page-container">
+    <div>
+      <div class="header-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+      
+      <h2 class="section-heading">BACKEND API DOCUMENTATION</h2>
+      
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Method & Endpoint</th>
+            <th>Auth</th>
+            <th>Function</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>GET /api/health</code></td>
+            <td>Public</td>
+            <td>Returns server uptime, health status, and S3 connectivity check.</td>
+          </tr>
+          <tr>
+            <td><code>GET /api/menu</code></td>
+            <td>Public</td>
+            <td>Retrieves menu items with dynamically resolved S3 Presigned URLs.</td>
+          </tr>
+          <tr>
+            <td><code>GET /api/categories</code></td>
+            <td>Public</td>
+            <td>Returns list of all active culinary categories.</td>
+          </tr>
+          <tr>
+            <td><code>GET /api/media</code></td>
+            <td>Public</td>
+            <td>Returns hero banner and promotional video Presigned URLs.</td>
+          </tr>
+          <tr>
+            <td><code>POST /api/admin/verify-pin</code></td>
+            <td>Public</td>
+            <td>Validates the 4-digit administrative security PIN (1234).</td>
+          </tr>
+          <tr>
+            <td><code>POST /api/admin/sync-s3</code></td>
+            <td>PIN Header</td>
+            <td>One-click automated seeding of all starter dish media to S3.</td>
+          </tr>
+          <tr>
+            <td><code>POST /api/admin/add-dish</code></td>
+            <td>PIN Header</td>
+            <td>Uploads dish photo to S3 and registers dish in menu.json.</td>
+          </tr>
+          <tr>
+            <td><code>DELETE /api/admin/dish/:id</code></td>
+            <td>PIN Header</td>
+            <td>Removes an item from menu.json.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 class="section-heading" style="margin-top: 10px;">AMAZON S3 STORAGE DESIGN</h2>
+      <p>Amazon S3 provides cloud object storage with 99.999999999% (11 9's) data durability. The configured bucket is <strong>expense-splitter-app-2026</strong> in the Asia Pacific Sydney region (<strong>ap-southeast-2</strong>).</p>
+
+      <img src="report-images/s3-dishes-objects.jpg" class="fig-img" alt="S3 Dish Objects">
+      <div class="fig-caption">Figure 4: Amazon S3 Management Console displaying 14 active dish image objects stored in expense-splitter-app-2026/images/dishes/.</div>
+    </div>
+
+    <div class="footer-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+  </div>
+
+
+  <!-- ==================== PAGE 10: IAM SECURITY & DEPLOYMENT ==================== -->
+  <div class="page-container">
+    <div>
+      <div class="header-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+      
+      <h2 class="section-heading">AWS IAM SECURITY CONFIGURATION</h2>
+      <p>IAM controls which AWS resources the application can access. The EC2 instance assumes an IAM Instance Role (<strong>EC2-Restaurant-S3-Role</strong>), eliminating the security risk of storing hardcoded credentials.</p>
+
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th style="width: 35%;">Security Element</th>
+            <th>Project Configuration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>IAM Role Name</strong></td>
+            <td>EC2-Restaurant-S3-Role</td>
+          </tr>
+          <tr>
+            <td><strong>Trusted Entity</strong></td>
+            <td>AWS Service: EC2 (ec2.amazonaws.com)</td>
+          </tr>
+          <tr>
+            <td><strong>Permissions Policy</strong></td>
+            <td>Custom Inline Policy (RestaurantS3UploadPolicy)</td>
+          </tr>
+          <tr>
+            <td><strong>Allowed Actions</strong></td>
+            <td>s3:GetObject, s3:PutObject, s3:DeleteObject, s3:ListBucket</td>
+          </tr>
+          <tr>
+            <td><strong>Target Resource</strong></td>
+            <td>arn:aws:s3:::expense-splitter-app-2026/*</td>
+          </tr>
+          <tr>
+            <td><strong>Credential Method</strong></td>
+            <td>EC2 Instance Profile (Automatic temporary rotating tokens)</td>
+          </tr>
+          <tr>
+            <td><strong>Permanent Access Keys</strong></td>
+            <td>Not Required / Strictly Avoided</td>
+          </tr>
+          <tr>
+            <td><strong>S3 Public Access</strong></td>
+            <td>Block all public access enabled</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 class="section-heading" style="margin-top: 10px;">AWS DEPLOYMENT PROCESS</h2>
+      <ol style="font-size: 8.5pt; line-height: 1.5;">
+        <li><strong>Step 1:</strong> Create private S3 bucket <code>expense-splitter-app-2026</code> in <code>ap-southeast-2</code> with Block Public Access enabled.</li>
+        <li><strong>Step 2:</strong> Create IAM Role <code>EC2-Restaurant-S3-Role</code> with S3 GetObject, PutObject, and ListBucket permissions.</li>
+        <li><strong>Step 3:</strong> Launch an Ubuntu Server 24.04 LTS EC2 instance (<code>t3.micro</code>) and attach the IAM Role.</li>
+        <li><strong>Step 4:</strong> Configure Security Group: Allow HTTP Port 80 from <code>0.0.0.0/0</code> and SSH Port 22 from personal IP.</li>
+        <li><strong>Step 5:</strong> Connect to EC2 via SSH: <code>ssh -i restaurant-key.pem ubuntu@3.26.210.235</code>.</li>
+        <li><strong>Step 6:</strong> Install Node.js 20 LTS, Git, PM2, and Nginx.</li>
+        <li><strong>Step 7:</strong> Clone the GitHub repository: <code>git clone https://github.com/Prishu07/digital-restaurant-menu.git</code>.</li>
+      </ol>
+    </div>
+
+    <div class="footer-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+  </div>
+
+
+  <!-- ==================== PAGE 11: DEPLOYMENT CONTINUED ==================== -->
+  <div class="page-container">
+    <div>
+      <div class="header-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+      
+      <h2 class="section-heading">AWS DEPLOYMENT PROCESS (CONTINUED)</h2>
+      
+      <p><strong>Step 8:</strong> Install root backend dependencies and frontend dependencies:</p>
+      <div class="code-box">cd digital-restaurant-menu
+npm install
+npm run install:frontend</div>
+
+      <p><strong>Step 9:</strong> Compile the production React Single Page Application into the root <code>public/</code> folder:</p>
+      <div class="code-box">npm run build</div>
+
+      <p><strong>Step 10:</strong> Create the production environment configuration file (<code>.env</code>):</p>
+      <div class="code-box">nano .env
+PORT=3000
+AWS_REGION=ap-southeast-2
+S3_BUCKET_NAME=expense-splitter-app-2026
+ADMIN_PIN=1234</div>
+
+      <p><strong>Step 11:</strong> Start Express using PM2 process manager and configure automatic system restart:</p>
+      <div class="code-box">pm2 start ecosystem.config.js
+pm2 startup
+pm2 save</div>
+
+      <p><strong>Step 12:</strong> Configure Nginx as a reverse proxy with 50MB upload capacity to forward Port 80 to Port 3000:</p>
+      <div class="code-box">sudo cp nginx.conf /etc/nginx/sites-available/restaurant-menu
+sudo ln -s /etc/nginx/sites-available/restaurant-menu /etc/nginx/sites-enabled/
+sudo rm -f /etc/nginx/sites-enabled/default
+sudo nginx -t
+sudo systemctl reload nginx</div>
+
+      <p><strong>Step 13:</strong> Open web browser and access the live application endpoint: <code>http://3.26.210.235/</code>.</p>
+    </div>
+
+    <div class="footer-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+  </div>
+
+
+  <!-- ==================== PAGE 12: DEPLOYMENT & LINKS ==================== -->
+  <div class="page-container">
+    <div>
+      <div class="header-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+      
+      <h2 class="section-heading">DEPLOYMENT ARCHITECTURE AND PROJECT LINKS</h2>
+      
+      <div style="margin: 6px 0;">
+        <div class="flow-box">DEVELOPER COMMITS CODE LOCALLY</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">GIT PUSH TO GITHUB REPOSITORY</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">AWS EC2 UBUNTU SERVER (PULLS REPO)</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">NPM BUILD & PM2 RUNS EXPRESS ON PORT 3000</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">NGINX PROXIES INCOMING TRAFFIC FROM PORT 80</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">LIVE WEB APPLICATION AVAILABLE WORLDWIDE</div>
+      </div>
+
+      <img src="report-images/github-repo.png" class="fig-img" style="max-height: 150px;" alt="GitHub Repository">
+      <div class="fig-caption">Figure 5: GitHub cloud repository setup hosting version-controlled project source code.</div>
+
+      <div style="margin: 8px 0; background: #f8fafc; border: 1.5px solid #0f172a; padding: 8px 12px; border-radius: 6px;">
+        <div style="font-size: 9pt; font-weight: bold;">Live Application URL</div>
+        <div style="font-family: Consolas, monospace; font-size: 8.5pt; color: #0284c7; margin-bottom: 6px;">
+          <a href="http://3.26.210.235/" style="color: #0284c7; text-decoration: none;">http://3.26.210.235/</a>
+        </div>
+        <div style="font-size: 9pt; font-weight: bold;">GitHub Repository URL</div>
+        <div style="font-family: Consolas, monospace; font-size: 8.5pt; color: #0284c7;">
+          <a href="https://github.com/Prishu07/digital-restaurant-menu.git" style="color: #0284c7; text-decoration: none;">https://github.com/Prishu07/digital-restaurant-menu.git</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+  </div>
+
+
+  <!-- ==================== PAGE 13: TESTING AND VERIFICATION ==================== -->
+  <div class="page-container">
+    <div>
+      <div class="header-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+      
+      <h2 class="section-heading">TESTING AND VERIFICATION</h2>
+      
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th style="width: 25%;">Test</th>
+            <th style="width: 35%;">Action</th>
+            <th>Expected Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Application Availability</strong></td>
+            <td>Open EC2 Public IP URL (http://3.26.210.235/).</td>
+            <td>L'Aura Bistro restaurant UI loads with complete styling.</td>
+          </tr>
+          <tr>
+            <td><strong>Health API</strong></td>
+            <td>Execute <code>GET /api/health</code>.</td>
+            <td>Returns HTTP 200 with uptime and S3 configuration status.</td>
+          </tr>
+          <tr>
+            <td><strong>Menu Retrieval</strong></td>
+            <td>Execute <code>GET /api/menu</code>.</td>
+            <td>Returns 14 dishes with resolved temporary S3 Presigned URLs.</td>
+          </tr>
+          <tr>
+            <td><strong>Category Filter</strong></td>
+            <td>Click "Chef's Specials" category tab.</td>
+            <td>UI immediately filters to display only special culinary items.</td>
+          </tr>
+          <tr>
+            <td><strong>Live Search</strong></td>
+            <td>Type "Bruschetta" in search bar.</td>
+            <td>Instantly isolates Truffle Bruschetta dish without reload.</td>
+          </tr>
+          <tr>
+            <td><strong>Promotional Video</strong></td>
+            <td>Click Play in Promotional Video section.</td>
+            <td>HTML5 player streams kitchen video via S3 presigned URL.</td>
+          </tr>
+          <tr>
+            <td><strong>Admin PIN Check</strong></td>
+            <td>Enter PIN <code>1234</code> in Admin Modal.</td>
+            <td>Access granted to S3 media manager and dish editor.</td>
+          </tr>
+          <tr>
+            <td><strong>S3 Media Import</strong></td>
+            <td>Click "Start S3 Media Import" button.</td>
+            <td>Backend uploads starter dish photos directly to S3 bucket.</td>
+          </tr>
+          <tr>
+            <td><strong>Direct Dish Upload</strong></td>
+            <td>Upload custom photo and submit dish form.</td>
+            <td>File streams to S3 and registers dish in menu.json.</td>
+          </tr>
+          <tr>
+            <td><strong>S3 Verification</strong></td>
+            <td>Inspect S3 console at images/dishes/.</td>
+            <td>Uploaded dish files appear with correct byte sizes.</td>
+          </tr>
+          <tr>
+            <td><strong>Security Verification</strong></td>
+            <td>Inspect client network requests.</td>
+            <td>No AWS credentials exposed; S3 remains completely private.</td>
+          </tr>
+          <tr>
+            <td><strong>PM2 Persistence</strong></td>
+            <td>Execute <code>pm2 restart restaurant-menu</code>.</td>
+            <td>Application restarts in background with zero downtime.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="margin-top: 10px; font-size: 8.5pt; font-style: italic; color: #334155;">Live production testing verified that all culinary assets stored in private bucket expense-splitter-app-2026 stream seamlessly in client browsers via presigned GET URLs without exposing AWS secrets or credentials.</p>
+    </div>
+
+    <div class="footer-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+  </div>
+
+
+  <!-- ==================== PAGE 14: SECURITY, COST & OUTCOMES ==================== -->
+  <div class="page-container">
+    <div>
+      <div class="header-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+      
+      <h2 class="section-heading">SECURITY, COST, LIMITATIONS AND FUTURE IMPROVEMENTS</h2>
+      
+      <h3 class="sub-heading">Security Considerations</h3>
+      <ul style="font-size: 8.5pt;">
+        <li><strong>S3 Block Public Access:</strong> Fully enabled; direct unauthenticated public access to bucket objects is blocked.</li>
+        <li><strong>IAM Least Privilege:</strong> EC2 uses an IAM Instance Profile; no AWS access keys are stored in code or on disk.</li>
+        <li><strong>Reverse Proxy Shield:</strong> Internal Port 3000 is closed to the internet; Nginx inspects all traffic on Port 80.</li>
+        <li><strong>Upload Guard:</strong> Nginx enforces <code>client_max_body_size 50M;</code> to handle photos while blocking buffer floods.</li>
+      </ul>
+
+      <h3 class="sub-heading">Cost Considerations</h3>
+      <ul style="font-size: 8.5pt;">
+        <li>Built on AWS Free Tier eligible resources: <code>t3.micro</code> EC2 instance and standard S3 storage.</li>
+        <li>In-memory backend caching of presigned URLs (45-min TTL) prevents redundant signing calculations.</li>
+      </ul>
+
+      <h3 class="sub-heading">Current Scope and Limitations</h3>
+      <ul style="font-size: 8.5pt;">
+        <li><strong>Included:</strong> Single-page UI, live search, category filter, S3 presigned media streaming, PIN-protected admin manager, EC2 Ubuntu hosting with Nginx and PM2.</li>
+        <li><strong>Not Included:</strong> Multi-tenant customer logins, online table ordering/payment checkout, and automated SSL domain binding.</li>
+      </ul>
+
+      <h3 class="sub-heading">Possible Future Improvements</h3>
+      <ul style="font-size: 8.5pt;">
+        <li>Automated SSL/TLS certificate installation via Let's Encrypt Certbot (<code>https://</code>).</li>
+        <li>Amazon CloudFront CDN integration for edge caching of high-resolution food photography.</li>
+        <li>Online customer table reservation system and digital payment gateway integration.</li>
+      </ul>
+
+      <h2 class="section-heading" style="margin-top: 10px;">FINAL PROJECT SUMMARY</h2>
+      <p style="font-size: 8.5pt;">L'Aura Bistro successfully demonstrates how modern cloud-native architecture can replace traditional database complexity with a lightweight, secure, and production-ready digital restaurant catalog. By combining React, Node.js, Amazon S3, and Amazon EC2 with IAM instance profile security, the project delivers enterprise-grade cloud performance with zero permanent credential exposure.</p>
+    </div>
+
+    <div class="footer-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+  </div>
+
+
+  <!-- ==================== PAGE 15: LEARNING OUTCOMES ==================== -->
+  <div class="page-container">
+    <div>
+      <div class="header-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+      
+      <h2 class="section-heading">LEARNING OUTCOMES</h2>
+      <ul style="line-height: 1.5; font-size: 9pt;">
+        <li><strong>Cloud Infrastructure Design:</strong> Practical experience provisioning virtual compute (EC2) and object storage (S3) on AWS.</li>
+        <li><strong>IAM Principle of Least Privilege:</strong> Mastered IAM instance profiles to eliminate hardcoded AWS access keys.</li>
+        <li><strong>Full-Stack Cloud Integration:</strong> Successfully compiled a React.js single-page application into an Express backend.</li>
+        <li><strong>Object Storage & Presigned URLs:</strong> Implemented AWS SDK v3 cryptographic presigned URLs for secure private media delivery.</li>
+        <li><strong>Production Server Administration:</strong> Configured Nginx as a reverse proxy on Port 80 and established PM2 daemon process management on Ubuntu Linux.</li>
+        <li><strong>DevOps Continuous Deployment:</strong> Established a seamless Git/GitHub continuous update workflow for cloud applications.</li>
+      </ul>
+
+      <h2 class="section-heading" style="margin-top: 14px;">FINAL ARCHITECTURE</h2>
+      
+      <div style="margin: 10px 0;">
+        <div class="flow-box">USER / WEB BROWSER</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">HTTP PORT 80 (PUBLIC ACCESS)</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">NGINX REVERSE PROXY</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">EXPRESS REST API (INTERNAL PORT 3000)</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">data/menu.json (NO DATABASE OVERHEAD)</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">AWS SDK v3 S3 CLIENT</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">EC2 IAM INSTANCE ROLE AUTHENTICATION</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">AMAZON S3 PRIVATE OBJECT BUCKET</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">SECURE DYNAMIC PRESIGNED MEDIA STREAMING</div>
+      </div>
+    </div>
+
+    <div class="footer-tag">CLOUD COMPUTING USING AWS • INTERNSHIP TRAINING REPORT</div>
+  </div>
+
+</body>
+</html>
