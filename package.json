@@ -1,0 +1,32 @@
+{
+  "name": "digital-restaurant-menu",
+  "version": "1.0.0",
+  "description": "Production-ready Digital Restaurant Menu website with Express, React, and AWS S3",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev:server": "node server.js",
+    "install:frontend": "npm --prefix frontend install",
+    "build": "npm --prefix frontend run build",
+    "upload:media": "node scripts/upload-media.js"
+  },
+  "keywords": [
+    "restaurant-menu",
+    "react",
+    "express",
+    "aws-s3",
+    "aws-ec2",
+    "nginx",
+    "pm2"
+  ],
+  "author": "Antigravity Engineering",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.750.0",
+    "@aws-sdk/s3-request-presigner": "^3.750.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}
+
