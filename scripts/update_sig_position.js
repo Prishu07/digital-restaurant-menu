@@ -39,3 +39,4 @@ if (!html.includes(oldSigBlock)) {
 html = html.replace(oldSigBlock, newSigBlock);
 fs.writeFileSync('C:/AWS PROJECT/digital-restaurant-menu/internship-report.html', html, 'utf8');
 console.log("Successfully updated signature block in internship-report.html!");
+
