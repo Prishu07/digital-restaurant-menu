@@ -60,3 +60,4 @@ html = html.replace(oldSigTarget, newSig);
 
 fs.writeFileSync('C:/AWS PROJECT/digital-restaurant-menu/internship-report.html', html, 'utf8');
 console.log('Successfully updated internship-report.html!');
+

@@ -38,3 +38,4 @@ while (pos < buf.length - 4) {
     pos++;
 }
 console.log(`Total JPEGs extracted: ${jpgCount}`);
+

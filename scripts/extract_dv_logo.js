@@ -126,3 +126,4 @@ fs.writeFileSync(target2, finalPng);
 
 console.log("Successfully wrote PNG to:", target1, `(${finalPng.length} bytes)`);
 console.log("Successfully wrote PNG to:", target2, `(${finalPng.length} bytes)`);
+
